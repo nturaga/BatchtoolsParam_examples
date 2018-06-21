@@ -1,0 +1,31 @@
+#!/bin/bash
+
+## The name of the job, can be anything, simply used when displaying
+## the list of running jobs
+#$ -N <%= job.name %>
+
+## Combining output/error messages into one file
+#$ -j y
+
+## Give the name of the output log file
+#$ -o <%= log.file %>
+
+## One needs to tell the queue system to use the current directory as
+## the working directory Or else the script may fail as it will
+## execute in your top level home directory /home/username
+#$ -cwd
+
+## Use environment variables
+#$ -V
+
+## Use 16 slots
+#$ -pe slots 16
+
+## Use correct queue
+#$ -q all.q
+
+## On the worker node, set up and run R
+module load R/3.5.0
+module load salmon/0.9.1
+Rscript -e 'batchtools::doJobCollection("<%= uri %>")'
+exit 0
