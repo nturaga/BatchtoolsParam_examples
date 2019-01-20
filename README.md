@@ -22,3 +22,6 @@ Download the Arabdopsis thaliana index or use the one provided.
 Make the salmon index with the command
 
 	salmon index -i athal_index -t athal.fa.gz
+
+Presentation: http://bit.ly/scale-bioc
+
